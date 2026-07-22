@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Redesigned favicon: one full-bleed background square (no separate corner
+  patches like the old file had, since that mismatch is almost certainly
+  what was showing up as a border) and one bold, thick-stroke mark that
+  stays readable even scaled down to 16x16.
+
+  Colors match the site's design tokens in styles.css:
+    background: the track navy color (#202b45)
+    mark: the split amber color (#e3a23f)
+
+  To swap the mark for initials, a running silhouette, etc. later: replace
+  just the path in the MARK group below. The background square can
+  stay untouched.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Background: fills the entire canvas edge to edge, rounded corners
+       cut directly into this one shape (not faked with extra patches) -->
+  <rect x="0" y="0" width="64" height="64" rx="12" fill="#202b45"/>
+
+  <!-- Mark: bold "J" built from a thick stroke with rounded caps and
+       joins, so it reads as a solid shape rather than a thin line at
+       small sizes -->
+  <g fill="none" stroke="#e3a23f" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M40 15 L40 40 A11 11 0 0 1 27 51"/>
+  </g>
+</svg>
