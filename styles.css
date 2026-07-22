@@ -1,0 +1,281 @@
+/* ==========================================================================
+   STYLES.CSS — shared by index.html, portfolio.html, running.html
+   ==========================================================================
+   Design concept: a track meet at night — navy sky, painted lane lines,
+   a stopwatch/scoreboard readout for times. The site nav is styled as
+   three numbered "lanes" because there are three pages (Links / Portfolio
+   / Running), which mirrors how lanes are numbered on a real track.
+
+   HOW THIS FILE IS ORGANIZED (top to bottom):
+     1. Design tokens (colors, fonts, spacing) — change the look here
+     2. Reset / base element styles
+     3. Layout shell (page container, header, footer)
+     4. Nav ("lanes")
+     5. Cards & buttons (reused across all three pages)
+     6. Stopwatch/PR readout (used on running.html)
+     7. Small utilities
+     8. Responsive tweaks
+   ========================================================================== */
+
+/* ---------- 1. DESIGN TOKENS ---------- */
+:root {
+  /* Colors */
+  --ink: #171a21;            /* body text */
+  --ink-soft: #565d6b;       /* secondary text */
+  --track-navy: #202b45;     /* primary brand color — header, nav, footer */
+  --track-navy-light: #2c3a5c;
+  --cinder: #eef0f3;         /* page background */
+  --lane-white: #ffffff;     /* card background */
+  --split-amber: #e3a23f;    /* accent — hover states, PR highlights */
+  --finish-crimson: #c1392b; /* used sparingly — charity race CTA only */
+  --border: #dde1e7;
+
+  /* Fonts (loaded via <link> in each page's <head>) */
+  --font-display: "Oswald", sans-serif;      /* headlines, scoreboard feel */
+  --font-body: "Source Sans 3", sans-serif;  /* paragraphs, UI text */
+  --font-mono: "IBM Plex Mono", monospace;   /* times, dates, stats */
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.75rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+
+  --radius: 10px;
+  --max-width: 760px;
+}
+
+/* ---------- 2. RESET / BASE ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--cinder);
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--space-xs) 0;
+  color: var(--track-navy);
+}
+
+h1 { font-size: 2.1rem; text-transform: uppercase; }
+h2 { font-size: 1.4rem; text-transform: uppercase; }
+
+p { color: var(--ink-soft); margin: 0 0 var(--space-sm) 0; }
+
+a { color: var(--track-navy); }
+
+img { max-width: 100%; display: block; }
+
+/* Visible keyboard focus everywhere — don't remove this */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--split-amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ---------- 3. LAYOUT SHELL ---------- */
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-sm) var(--space-xl);
+}
+
+.site-footer {
+  text-align: center;
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+/* ---------- 4. NAV ("LANES") ---------- */
+.lane-nav {
+  display: flex;
+  gap: var(--space-xs);
+  margin: var(--space-md) 0;
+  border-top: 3px solid var(--track-navy);
+  border-bottom: 3px solid var(--track-navy);
+  padding: var(--space-xs) 0;
+}
+
+.lane-nav a {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  padding: var(--space-xs);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+
+.lane-nav a .lane-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+}
+
+.lane-nav a .lane-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.lane-nav a:hover,
+.lane-nav a[aria-current="page"] {
+  background-color: var(--track-navy);
+}
+.lane-nav a:hover .lane-label,
+.lane-nav a:hover .lane-name,
+.lane-nav a[aria-current="page"] .lane-label,
+.lane-nav a[aria-current="page"] .lane-name {
+  color: var(--lane-white);
+}
+
+/* ---------- 5. CARDS & BUTTONS ---------- */
+.card {
+  background-color: var(--lane-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.link-row .link-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  fill: var(--track-navy);
+}
+
+/* .link-card wraps a .link-row (the GitHub / LinkedIn / Athletic.net
+   buttons on index.html) — hovering anywhere on the card, not just the
+   text, flips the whole button to navy. */
+.link-card {
+  transition: background-color 0.15s ease;
+}
+.link-card:hover,
+.link-card:focus-within {
+  background-color: var(--track-navy);
+}
+.link-card:hover .link-row,
+.link-card:focus-within .link-row {
+  color: var(--lane-white);
+}
+.link-card:hover .link-icon,
+.link-card:focus-within .link-icon {
+  fill: var(--lane-white);
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius);
+  background-color: var(--track-navy);
+  color: var(--lane-white);
+}
+.btn:hover { background-color: var(--split-amber); color: var(--ink); }
+
+.btn-crimson { background-color: var(--finish-crimson); }
+.btn-crimson:hover { background-color: var(--split-amber); }
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--track-navy);
+  background-color: var(--cinder);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  margin: 0 0.3rem 0.3rem 0;
+}
+
+/* ---------- 6. STOPWATCH / PR READOUT (running.html) ---------- */
+.split-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  background-color: var(--track-navy);
+  border-radius: var(--radius);
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.split-card .event-name {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  color: var(--lane-white);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.split-card .event-meta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #aab3c7;
+  margin-top: 0.15rem;
+}
+
+.split-card .event-time {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  color: var(--split-amber);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 7. UTILITIES ---------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.text-center { text-align: center; }
+.mt-lg { margin-top: var(--space-lg); }
+
+.profile-photo {
+  width: 128px;
+  height: 128px;
+  margin: 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--lane-white);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+/* ---------- 8. RESPONSIVE ---------- */
+@media (max-width: 480px) {
+  .lane-nav { flex-direction: row; font-size: 0.9rem; }
+  .split-card { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+  h1 { font-size: 1.6rem; }
+}

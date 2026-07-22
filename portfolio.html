@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jake Kiniry | Portfolio</title>
+  <meta name="description" content="Coding projects and tutoring services from Jake Kiniry.">
+
+  <link rel="icon" href="./Favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="./Favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+
+    <header class="mt-lg">
+      <p class="eyebrow">Portfolio</p>
+      <h1>What I build</h1>
+      <p>A running list of projects, plus tutoring services.</p>
+    </header>
+
+    <!-- Keep this nav block identical across all three pages -->
+    <nav class="lane-nav" aria-label="Site sections">
+      <a href="index.html">
+        <span class="lane-label">LANE 1</span>
+        <span class="lane-name">Links</span>
+      </a>
+      <a href="portfolio.html" aria-current="page">
+        <span class="lane-label">LANE 2</span>
+        <span class="lane-name">Portfolio</span>
+      </a>
+      <a href="running.html">
+        <span class="lane-label">LANE 3</span>
+        <span class="lane-name">Running</span>
+      </a>
+    </nav>
+
+    <!-- ============ PROJECTS ============
+         To add a project: copy one full <article class="card"> block below,
+         then edit the title, description, tags, and link. -->
+    <section aria-label="Projects">
+      <h2>Projects</h2>
+
+      <article class="card">
+        <h3 style="font-family: var(--font-display); text-transform: uppercase; font-size: 1.05rem;">Charity Race</h3>
+        <p>More details soon</p>
+        <div>
+          <span class="tag">Charity</span>
+        </div>
+        <a href="#" class="btn" style="margin-top: 0.75rem;">View project</a>
+      </article>
+
+      <!-- ============ COPY FROM HERE TO ADD A NEW PROJECT ============
+      <article class="card">
+        <h3 style="font-family: var(--font-display); text-transform: uppercase; font-size: 1.05rem;">Project Name</h3>
+        <p>Short description.</p>
+        <div><span class="tag">Tag</span></div>
+        <a href="#" class="btn" style="margin-top: 0.75rem;">View project</a>
+      </article>
+      ============ COPY UP TO HERE ============ -->
+    </section>
+
+    <!-- ============ TUTORING ============ -->
+    <section aria-label="Tutoring" class="mt-lg">
+      <h2>Tutoring</h2>
+      <div class="card">
+        <!-- EDIT ME: subjects/levels you tutor -->
+        <p><strong>Subjects:</strong> Chemistry, Precalculus, Algebra, Geometry</p>
+        <!-- EDIT ME: how students/parents should reach you — an email is
+             simplest and keeps you from needing to publish a phone number -->
+        <p>
+          <strong>Get in touch:</strong>
+          <!-- EDIT ME: replace data-codes with your real address, encoded —
+               see the ENCODE HELPER at the bottom of contact.js -->
+          <a class="js-email" data-key="7" data-codes="81,104,114,108,114,112,117,112,121,128,71,110,116,104,112,115,53,106,118,116" href="#">Click to reveal email</a>
+        </p>
+        <noscript><p>Enable JavaScript to see the contact email.</p></noscript>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      &copy; <span id="year"></span> Jake Kiniry
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script src="contact.js"></script>
+  </main>
+</body>
+</html>

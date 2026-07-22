@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jake Kiniry | Running</title>
+  <meta name="description" content="Personal records and racing updates from Jake Kiniry.">
+
+  <link rel="icon" href="./Favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="./Favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+
+    <header class="mt-lg">
+      <p class="eyebrow">Running</p>
+      <h1>Personal Records</h1>
+      <p>Updated as times drop. Full race history on Athletic.net.</p>
+    </header>
+
+    <!-- Keep this nav block identical across all three pages -->
+    <nav class="lane-nav" aria-label="Site sections">
+      <a href="index.html">
+        <span class="lane-label">LANE 1</span>
+        <span class="lane-name">Links</span>
+      </a>
+      <a href="portfolio.html">
+        <span class="lane-label">LANE 2</span>
+        <span class="lane-name">Portfolio</span>
+      </a>
+      <a href="running.html" aria-current="page">
+        <span class="lane-label">LANE 3</span>
+        <span class="lane-name">Running</span>
+      </a>
+    </nav>
+
+    <!-- ============ PRs ============
+         To add or update a PR: copy one .split-card block, then edit the
+         event name, time, and the meta line (date/meet). Order them
+         however you like — shortest to longest is common. -->
+    <section aria-label="Personal records">
+
+      <div class="split-card">
+        <div>
+          <!-- EDIT ME: event name -->
+          <span class="event-name">400m</span>
+          <!-- EDIT ME: date + meet name, or leave blank -->
+          <span class="event-meta">EDIT: date · Time Trial</span>
+        </div>
+        <!-- EDIT ME: your time -->
+        <span class="event-time">54.1</span>
+      </div>
+      <div class="split-card">
+        <div>
+          <!-- EDIT ME: event name -->
+          <span class="event-name">800m</span>
+          <!-- EDIT ME: date + meet name, or leave blank -->
+          <span class="event-meta">EDIT: date · meet name</span>
+        </div>
+        <!-- EDIT ME: your time -->
+        <span class="event-time">2:01.31</span>
+      </div>
+
+      <div class="split-card">
+        <div>
+          <span class="event-name">1600m</span>
+          <span class="event-meta">EDIT: date · meet name</span>
+        </div>
+        <span class="event-time">4:45.00</span>
+      </div>
+
+      <div class="split-card">
+        <div>
+          <span class="event-name">3200m</span>
+          <span class="event-meta">EDIT: date · meet name</span>
+        </div>
+        <span class="event-time">10:20.00</span>
+      </div>
+
+      <div class="split-card">
+        <div>
+          <span class="event-name">5K (XC)</span>
+          <span class="event-meta">EDIT: date · meet name</span>
+        </div>
+        <span class="event-time">17:19.00</span>
+      </div>
+
+      <!-- ============ COPY FROM HERE TO ADD A NEW PR ============
+      <div class="split-card">
+        <div>
+          <span class="event-name">Event</span>
+          <span class="event-meta">Date · meet name</span>
+        </div>
+        <span class="event-time">0:00.00</span>
+      </div>
+      ============ COPY UP TO HERE ============ -->
+    </section>
+
+    <!-- ============ CHARITY RACE ============ -->
+    <section aria-label="Charity race" class="mt-lg">
+      <h2>Charity Race</h2>
+      <div class="card">
+        <!-- EDIT ME: swap this for real details once the date/cause/location
+             are locked in — cause, distance, date, location, registration link -->
+        <p>Currently organizing a charity race. Details on the cause, date,
+          and location are coming soon.</p>
+        <!-- EDIT ME: replace data-codes with your real address, encoded —
+             see the ENCODE HELPER at the bottom of contact.js. Swap this
+             for a signup form or registration link later if you set one up. -->
+        <a class="js-email btn btn-crimson" data-key="7" data-codes="81,104,114,108,114,112,117,112,121,128,71,110,116,104,112,115,53,106,118,116" data-label="keep" href="#">Get notified</a>
+        <noscript><p>Enable JavaScript to see the contact email.</p></noscript>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      &copy; <span id="year"></span> Jake Kiniry
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script src="contact.js"></script>
+  </main>
+</body>
+</html>
