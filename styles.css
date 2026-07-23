@@ -1,13 +1,13 @@
 /* ==========================================================================
-   STYLES.CSS — shared by index.html, portfolio.html, running.html
+   STYLES.CSS â€” shared by index.html, portfolio.html, running.html
    ==========================================================================
-   Design concept: a track meet at night — navy sky, painted lane lines,
+   Design concept: a track meet at night â€” navy sky, painted lane lines,
    a stopwatch/scoreboard readout for times. The site nav is styled as
    three numbered "lanes" because there are three pages (Links / Portfolio
    / Running), which mirrors how lanes are numbered on a real track.
 
    HOW THIS FILE IS ORGANIZED (top to bottom):
-     1. Design tokens (colors, fonts, spacing) — change the look here
+     1. Design tokens (colors, fonts, spacing) â€” change the look here
      2. Reset / base element styles
      3. Layout shell (page container, header, footer)
      4. Nav ("lanes")
@@ -22,12 +22,12 @@
   /* Colors */
   --ink: #171a21;            /* body text */
   --ink-soft: #565d6b;       /* secondary text */
-  --track-navy: #202b45;     /* primary brand color — header, nav, footer */
+  --track-navy: #202b45;     /* primary brand color â€” header, nav, footer */
   --track-navy-light: #2c3a5c;
   --cinder: #eef0f3;         /* page background */
   --lane-white: #ffffff;     /* card background */
-  --split-amber: #e3a23f;    /* accent — hover states, PR highlights */
-  --finish-crimson: #c1392b; /* used sparingly — charity race CTA only */
+  --split-amber: #e3a23f;    /* accent â€” hover states, PR highlights */
+  --finish-crimson: #c1392b; /* used sparingly â€” charity race CTA only */
   --border: #dde1e7;
 
   /* Fonts (loaded via <link> in each page's <head>) */
@@ -74,7 +74,7 @@ a { color: var(--track-navy); }
 
 img { max-width: 100%; display: block; }
 
-/* Visible keyboard focus everywhere — don't remove this */
+/* Visible keyboard focus everywhere â€” don't remove this */
 a:focus-visible,
 button:focus-visible {
   outline: 3px solid var(--split-amber);
@@ -171,10 +171,16 @@ button:focus-visible {
 }
 
 /* .link-card wraps a .link-row (the GitHub / LinkedIn / Athletic.net
-   buttons on index.html) — hovering anywhere on the card, not just the
+   buttons on index.html) â€” hovering anywhere on the card, not just the
    text, flips the whole button to navy. */
 .link-card {
+  padding: 0; /* the .link-row anchor below supplies its own padding,
+                 so the clickable area exactly matches the hover area */
+  overflow: hidden; /* keeps the anchor's edges inside the card's rounded corners */
   transition: background-color 0.15s ease;
+}
+.link-card .link-row {
+  padding: var(--space-md);
 }
 .link-card:hover,
 .link-card:focus-within {
